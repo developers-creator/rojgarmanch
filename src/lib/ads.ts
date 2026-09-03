@@ -62,3 +62,6 @@ export const ARTICLE_INLINE_ADS: AdCreative[] = [
 
 /** Stacked ads below the article “यो पनि हेर्नुहोस्” rail. */
 export const ARTICLE_RAIL_ADS: AdCreative[] = [ADS.belaco, ADS.ime];
+
+/** Aside ads below करियर प्लेबुक on the homepage. */
+export const CAREER_PLAYBOOK_ADS: AdCreative[] = [ADS.ime, ADS.classicTech];

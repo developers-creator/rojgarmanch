@@ -1,7 +1,9 @@
+import { CAREER_PLAYBOOK_ADS } from "@/lib/ads";
 import { Reveal } from "@/components/motion/Reveal";
+import { AdUnit } from "@/components/ui/AdUnit";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 
-/** करियर प्लेबुक — tip column */
+/** करियर प्लेबुक — tip column + stacked ads */
 export function CareerPlaybook() {
   const tips = [
     "करियर यात्रामा एकपटकमा एउटा स्पष्ट कदम मात्र लिनुहोस्।",
@@ -13,7 +15,9 @@ export function CareerPlaybook() {
   return (
     <Reveal className="career-playbook reveal reveal-delay-2">
       <aside>
-        <SectionTitle href="#article" more={false}>करियर प्लेबुक</SectionTitle>
+        <SectionTitle href="#article" more={false}>
+          करियर प्लेबुक
+        </SectionTitle>
         <ul className="career-playbook__list">
           {tips.map((tip) => (
             <li key={tip} className="career-playbook__item">
@@ -21,6 +25,17 @@ export function CareerPlaybook() {
             </li>
           ))}
         </ul>
+
+        <div className="career-playbook__ads" aria-label="विज्ञापन">
+          {CAREER_PLAYBOOK_ADS.map((ad) => (
+            <AdUnit
+              key={ad.src}
+              ad={ad}
+              variant="aside"
+              useMobileImage={false}
+            />
+          ))}
+        </div>
       </aside>
     </Reveal>
   );

@@ -79,11 +79,11 @@ export function HomePage({ data }: HomePageProps) {
 
       <BannerAd ad={ADS.hbl} />
 
-      {/* फिचर · अन्तर्वार्ता */}
-      <Rojgar>
-        <Feature />
+      {/* अन्तर्वार्ता · फिचर */}
+      <section className="container split split--iv-feature" aria-label="अन्तर्वार्ता र फिचर">
         <Antarwarta />
-      </Rojgar>
+        <Feature />
+      </section>
 
       <BannerAd ad={ADS.ncell} />
 

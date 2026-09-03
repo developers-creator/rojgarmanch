@@ -1,70 +1,73 @@
 import { unsplash as u } from "@/lib/media";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionTitle } from "@/components/ui/SectionTitle";
-import { Nrn } from "./Nrn";
 
-const stack = [
-  ["1556761175-b413da4baf72", "एजेन्सीबाट इन-हाउस जाँदा फाइदा–बेफाइदा"],
-  ["1600880292203-757bb62b4baf", "स्टार्टअप भूमिका वर्ष दिनमै किन अड्किन्छ"],
-  ["1497366216548-37526070297c", "नयाँ टोलीमा जोडिने अघि सोध्नुपर्ने दस प्रश्न"],
+const items = [
+  ["1486406146926-c627a92ad1ab", "काठमाडौंमा नयाँ व्यावसायिक कम्प्लेक्सको लगानी बढ्यो"],
+  ["1492144534655-ae79c964c9d7", "अटो शोमा विद्युतीय सवारीको माग उच्च"],
+  ["1552664730-d307ca884978", "बैंकिङ क्षेत्रमा डिजिटल सेवा विस्तार"],
+  ["1517245386807-bb43f82c33c4", "बीमा क्षेत्रमा नयाँ योजना सार्वजनिक"],
+  ["1521737711867-e3b97375f902", "स्टार्टअप लगानीमा विदेशी चासो बढ्दो"],
+  ["1559136555-9303baea8ebd", "सेयर बजारमा संस्थागत खरिद सक्रिय"],
 ] as const;
 
-/** बिजनेस — Business */
+/** बिजनेस — image + solid red headline, then 2-col list */
 export function Business() {
   return (
     <Reveal className="reveal">
-      <div id="business">
-        <SectionTitle href="/category/business">बिजनेस</SectionTitle>
-        <div className="workplace-top">
-          <article className="overlay-card">
-            <div className="overlay-card__media">
-              <img
-                src={u("1507003211169-0a1dd7228f2d", 800, 1000)}
-                alt="कार्यस्थलमा काम गर्दै पेशेवर"
-                width={400}
-                height={500}
-                loading="lazy"
-              />
-            </div>
-            <div className="overlay-card__body">
-              <span className="badge badge--light">संस्कृति</span>
-              <h3 className="overlay-card__title line-2">
-                <a href="#article">प्रबन्धक परिवर्तन गर्दा हुने सात सामान्य गल्ती</a>
-              </h3>
-              <div className="meta meta--on-dark">
-                <span className="meta__author">ब्रायन कोल</span>
-              </div>
-            </div>
-          </article>
-          <ul className="stack-list">
-            {stack.map(([image, title]) => (
-              <li className="stack-item" key={title}>
-                <a
-                  className="stack-item__thumb"
-                  href="#article"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                >
+      <section
+        id="business"
+        className="biz-board"
+        aria-labelledby="business-title"
+      >
+        <SectionTitle href="/category/business">
+          <span id="business-title">बिजनेस</span>
+        </SectionTitle>
+
+        <article className="biz-hero">
+          <a
+            className="biz-hero__media"
+            href="#article"
+            tabIndex={-1}
+            aria-hidden="true"
+          >
+            <img
+              src={u("1541888946425-d81bb19240f5", 900, 640)}
+              alt=""
+              width={640}
+              height={440}
+              loading="lazy"
+            />
+          </a>
+          <div className="biz-hero__panel">
+            <h3 className="biz-hero__title">
+              <a href="#article">
+                बाढी पहिरोले अवरुद्ध सडक खुलाउन जेसिबी खटाइयो, स्थानीयको
+                सहयोगमा काम तीव्र
+              </a>
+            </h3>
+          </div>
+        </article>
+
+        <ul className="biz-grid">
+          {items.map(([image, title]) => (
+            <li key={title}>
+              <a className="biz-item" href="#article">
+                <span className="biz-item__thumb">
                   <img
-                    className="img-cover"
-                    src={u(image, 200, 160)}
-                    alt={title}
-                    width={84}
-                    height={68}
+                    src={u(image, 240, 160)}
+                    alt=""
+                    width={120}
+                    height={80}
                     loading="lazy"
                   />
-                </a>
-                <div>
-                  <h3 className="stack-item__title line-2">
-                    <a href="#article">{title}</a>
-                  </h3>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <Nrn />
-      </div>
+                </span>
+                <span className="biz-item__title line-2">{title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
     </Reveal>
   );
 }

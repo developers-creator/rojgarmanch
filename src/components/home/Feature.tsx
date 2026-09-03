@@ -1,70 +1,92 @@
 import { unsplash as u } from "@/lib/media";
 import { Reveal } from "@/components/motion/Reveal";
-import { SectionTitle } from "@/components/ui/SectionTitle";
-import { Nrn } from "./Nrn";
+import { Icon } from "@/components/ui/Icon";
 
-const stack = [
-  ["1556761175-b413da4baf72", "एजेन्सीबाट इन-हाउस जाँदा फाइदा–बेफाइदा"],
-  ["1600880292203-757bb62b4baf", "स्टार्टअप भूमिका वर्ष दिनमै किन अड्किन्छ"],
-  ["1497366216548-37526070297c", "नयाँ टोलीमा जोडिने अघि सोध्नुपर्ने दस प्रश्न"],
+const list = [
+  ["1559136555-9303baea8ebd", "आन्तरिक परियोजना पिच गर्दा हुने गल्तीहरू"],
+  ["1519389950473-47ba0277781c", "उच्च प्रदर्शन टोलीले कोचिङबाट सिक्ने कुरा"],
 ] as const;
 
-/** फिचर — Feature */
+/** फिचर — blue spotlight card + list below (outside the card) */
 export function Feature() {
   return (
-    <Reveal className="reveal">
-      <div id="feature">
-        <SectionTitle href="/category/feature">फिचर</SectionTitle>
-        <div className="workplace-top">
-          <article className="overlay-card">
-            <div className="overlay-card__media">
-              <img
-                src={u("1507003211169-0a1dd7228f2d", 800, 1000)}
-                alt="कार्यस्थलमा काम गर्दै पेशेवर"
-                width={400}
-                height={500}
-                loading="lazy"
-              />
-            </div>
-            <div className="overlay-card__body">
-              <span className="badge badge--light">संस्कृति</span>
-              <h3 className="overlay-card__title line-2">
-                <a href="#article">प्रबन्धक परिवर्तन गर्दा हुने सात सामान्य गल्ती</a>
+    <Reveal className="reveal reveal-delay-1">
+      <section
+        id="feature"
+        className="feature-spot"
+        aria-labelledby="feature-title"
+      >
+        <div className="feature-spot__card">
+          <div className="feature-spot__label">
+            <span className="feature-spot__rule" aria-hidden="true" />
+            <a
+              className="feature-spot__badge"
+              href="/category/feature"
+              id="feature-title"
+            >
+              फिचर
+            </a>
+            <span className="feature-spot__rule" aria-hidden="true" />
+          </div>
+
+          <article className="feature-spot__hero">
+            <img
+              className="feature-spot__cover"
+              src={u("1506905925346-21bda4d32df4", 900, 700)}
+              alt="पहाडी बस्तीको दृश्य"
+              width={900}
+              height={700}
+              loading="lazy"
+            />
+            <div className="feature-spot__shade" aria-hidden="true" />
+
+            <div className="feature-spot__body">
+              <h3 className="feature-spot__headline">
+                <a href="#article">
+                  मध्य-करियर पेशेवरहरूले दिगो भविष्यको खेल कसरी
+                  फेर्दैछन्
+                </a>
               </h3>
-              <div className="meta meta--on-dark">
-                <span className="meta__author">ब्रायन कोल</span>
-              </div>
+              <p className="feature-spot__excerpt">
+                दृश्यता, प्रायोजन र स्पष्ट जिम्मेवारीले नै अर्को पद खुल्छ —
+                प्रबन्धक र अपरेटरहरूसँगको संवाद।
+              </p>
+              <a className="feature-spot__cta" href="#article">
+                पुरा फिचर पढ्नुहोस्
+                <Icon name="arrow-right" size={14} />
+              </a>
             </div>
+
+            <img
+              className="feature-spot__inset"
+              src={u("1439066615861-d1af74d74000", 240, 240)}
+              alt=""
+              width={120}
+              height={120}
+              loading="lazy"
+            />
           </article>
-          <ul className="stack-list">
-            {stack.map(([image, title]) => (
-              <li className="stack-item" key={title}>
-                <a
-                  className="stack-item__thumb"
-                  href="#article"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                >
+        </div>
+
+        <ul className="feature-spot__list">
+          {list.map(([image, title]) => (
+            <li key={title}>
+              <a className="feature-spot__item" href="#article">
+                <span className="feature-spot__thumb">
                   <img
-                    className="img-cover"
                     src={u(image, 200, 160)}
-                    alt={title}
-                    width={84}
-                    height={68}
+                    alt=""
+                    width={88}
+                    height={66}
                     loading="lazy"
                   />
-                </a>
-                <div>
-                  <h3 className="stack-item__title line-2">
-                    <a href="#article">{title}</a>
-                  </h3>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <Nrn />
-      </div>
+                </span>
+                <span className="feature-spot__item-title line-2">{title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
     </Reveal>
   );
 }
