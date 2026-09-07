@@ -4978,8 +4978,8 @@ body.menu-open {
 
 .feature-spot__inset {
   position: absolute;
-  right: -10px;
-  bottom: -26px;
+  right: 0;
+  bottom: 0;
   z-index: 3;
   width: 100px;
   height: 100px;
@@ -5839,7 +5839,7 @@ body.menu-open {
   }
 }
 
-/* Dual category columns — खेल · पर्यटन */
+/* Dual category columns — खेल · पर्यटन (editorial split) */
 .duo-cats {
   display: grid;
   gap: var(--section-gap);
@@ -5851,7 +5851,7 @@ body.menu-open {
 @media (min-width: 768px) {
   .duo-cats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+    gap: 0;
   }
 }
 
@@ -5861,67 +5861,125 @@ body.menu-open {
 
 @media (min-width: 768px) {
   .duo-cats .col-block:first-child {
-    padding-right: clamp(1.25rem, 2.5vw, 2rem);
+    padding-right: clamp(1.5rem, 3vw, 2.25rem);
     border-right: 1px solid var(--color-border-light);
   }
 
   .duo-cats .col-block:last-child {
-    padding-left: clamp(1.25rem, 2.5vw, 2rem);
+    padding-left: clamp(1.5rem, 3vw, 2.25rem);
   }
 }
 
+/* Featured: full-width image, title below */
 .duo-cats .col-block__lead {
   display: grid;
   grid-template-columns: 1fr;
   gap: 14px;
-  margin-bottom: var(--space-4);
-  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-5);
   border-bottom: 1px solid var(--color-border-light);
+  align-items: start;
 }
 
 .duo-cats .col-block__lead-media {
+  display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 10;
+  overflow: hidden;
   border-radius: var(--radius);
+  background: var(--color-surface-muted);
 }
 
 .duo-cats .col-block__lead-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.45s var(--ease);
+}
+
+.duo-cats .col-block__lead:hover .col-block__lead-media img {
+  transform: scale(1.03);
+}
+
+.duo-cats .col-block__lead-body {
+  min-width: 0;
 }
 
 .duo-cats .col-block__lead-title {
   margin: 0;
-  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  padding-left: 0;
+  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.32;
+  letter-spacing: -0.015em;
 }
 
+.duo-cats .col-block__lead-title::before {
+  display: none;
+}
+
+.duo-cats .col-block__lead-title a {
+  color: var(--color-text-heading);
+}
+
+.duo-cats .col-block__lead-title a:hover {
+  color: var(--rm-primary);
+}
+
+/* Secondary: 2-up image-over-title tiles */
 .duo-cats .col-block__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 18px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .duo-cats .col-block__item {
-  display: grid;
-  grid-template-columns: 110px minmax(0, 1fr);
-  gap: 14px;
-  align-items: center;
-  padding: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  border-bottom: 0;
+  align-items: stretch;
 }
 
 .duo-cats .col-block__item-media {
-  width: 110px;
-  height: 78px;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
   border-radius: var(--radius);
+  background: var(--color-surface-muted);
+}
+
+.duo-cats .col-block__item-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease);
+}
+
+.duo-cats .col-block__item:hover .col-block__item-media img {
+  transform: scale(1.04);
 }
 
 .duo-cats .col-block__item-title {
   margin: 0;
-  font-size: 1.02rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.duo-cats .col-block__item-title a {
+  color: var(--color-text-heading);
+}
+
+.duo-cats .col-block__item-title a:hover {
+  color: var(--rm-primary);
 }
 
 .col-block__lead {
