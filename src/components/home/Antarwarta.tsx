@@ -29,7 +29,7 @@ export function Antarwarta() {
         className="iv-board"
         aria-labelledby="antarwarta-title"
       >
-        <SectionTitle href="/category/antarwarta" moreLabel="थप समाचार">
+        <SectionTitle href="/category/antarwarta">
           <span id="antarwarta-title">अन्तर्वार्ता</span>
         </SectionTitle>
 
@@ -56,7 +56,7 @@ export function Antarwarta() {
             <h3 className="iv-hero__title">
               <a href="#article">
                 स्पष्ट संवाद गर्ने टोलीसँग ग्राहक{" "}
-                <em>बस्ने पन्ध्र कारण</em>
+                बस्ने पन्ध्र कारण
               </a>
             </h3>
             <p className="iv-hero__excerpt">

@@ -1,30 +1,63 @@
 import { CAREER_PLAYBOOK_ADS } from "@/lib/ads";
+import { unsplash as u } from "@/lib/media";
 import { Reveal } from "@/components/motion/Reveal";
 import { AdUnit } from "@/components/ui/AdUnit";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 
+const tips = [
+  {
+    text: "करियर यात्रामा एकपटकमा एउटा स्पष्ट कदम मात्र लिनुहोस्।",
+    image: "1521737711867-e3b97375f902",
+    featured: true,
+  },
+  {
+    text: "सिकाइ र विश्राम दुवै राख्नुहोस् — थकानले निर्णय बिगार्छ।",
+  },
+  {
+    text: "साना लक्ष्य राख्नुहोस्, तर नियमित समीक्षा नछोड्नुहोस्।",
+  },
+  {
+    text: "रातमा भारी काम घटाउनुहोस्; दिनको मुख्य घण्टामा गहिरो काम गर्नुहोस्।",
+  },
+] as const;
+
 /** करियर प्लेबुक — tip column + stacked ads */
 export function CareerPlaybook() {
-  const tips = [
-    "करियर यात्रामा एकपटकमा एउटा स्पष्ट कदम मात्र लिनुहोस्।",
-    "सिकाइ र विश्राम दुवै राख्नुहोस् — थकानले निर्णय बिगार्छ।",
-    "साना लक्ष्य राख्नुहोस्, तर नियमित समीक्षा नछोड्नुहोस्।",
-    "रातमा भारी काम घटाउनुहोस्; दिनको मुख्य घण्टामा गहिरो काम गर्नुहोस्।",
-  ];
-
   return (
     <Reveal className="career-playbook reveal reveal-delay-2">
       <aside>
-        <SectionTitle href="#article" more={false}>
-          करियर प्लेबुक
-        </SectionTitle>
-        <ul className="career-playbook__list">
-          {tips.map((tip) => (
-            <li key={tip} className="career-playbook__item">
-              <p>{tip}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="career-playbook__panel">
+          <SectionTitle href="#article" more={false}>
+            करियर प्लेबुक
+          </SectionTitle>
+          <ul className="career-playbook__list">
+            {tips.map((tip) =>
+              "featured" in tip && tip.featured ? (
+                <li
+                  key={tip.text}
+                  className="career-playbook__item career-playbook__item--feature"
+                >
+                  <a className="career-playbook__feature" href="#article">
+                    <span className="career-playbook__feature-media">
+                      <img
+                        src={u(tip.image, 640, 360)}
+                        alt=""
+                        width={640}
+                        height={360}
+                        loading="lazy"
+                      />
+                    </span>
+                    <p>{tip.text}</p>
+                  </a>
+                </li>
+              ) : (
+                <li key={tip.text} className="career-playbook__item">
+                  <p>{tip.text}</p>
+                </li>
+              ),
+            )}
+          </ul>
+        </div>
 
         <div className="career-playbook__ads" aria-label="विज्ञापन">
           {CAREER_PLAYBOOK_ADS.map((ad) => (

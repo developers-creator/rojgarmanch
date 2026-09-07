@@ -449,7 +449,7 @@ export function Youtube({ data }: YoutubeProps) {
       <div className="yt-block__layout">
         <div className="yt-block__col">
           <SectionTitle href={data.channelUrl ?? "https://www.youtube.com"}>
-            <span id="youtube-title">युट्युब</span>
+            <span id="youtube-title">रोजगार टिभी</span>
           </SectionTitle>
           <Reveal className="yt-block__main reveal">
             <article className="yt-block__feature">

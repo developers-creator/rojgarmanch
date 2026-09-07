@@ -1,4 +1,4 @@
-/** खेल / पर्यटन / रमाइलो संसार — shared column block */
+/** खेल / पर्यटन — shared column block */
 import { unsplash as u } from "@/lib/media";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -42,32 +42,37 @@ export function CategoryColumn({
         >
           <img
             className="img-cover"
-            src={u(leadImage, 200, 160)}
+            src={u(leadImage, 800, 500)}
             alt={leadTitle}
-            width={100}
-            height={80}
+            width={800}
+            height={500}
             loading="lazy"
           />
         </a>
-        <div>
-          <h3 className="col-block__lead-title line-2">
+        <div className="col-block__lead-body">
+          <h3 className="col-block__lead-title line-3">
             <a href="#article">{leadTitle}</a>
           </h3>
         </div>
       </article>
-      <ul>
+      <ul className="col-block__list">
         {items.map((item) => {
           const itemObj = typeof item === "string" ? { title: item } : item;
           return (
             <li className="col-block__item" key={itemObj.title}>
               {itemObj.imageUrl ? (
-                <a className="col-block__item-media" href="#article" tabIndex={-1} aria-hidden="true">
+                <a
+                  className="col-block__item-media"
+                  href="#article"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                >
                   <img
                     className="img-cover"
-                    src={u(itemObj.imageUrl, 92, 80)}
+                    src={u(itemObj.imageUrl, 200, 160)}
                     alt={itemObj.title}
-                    width={92}
-                    height={80}
+                    width={120}
+                    height={90}
                     loading="lazy"
                   />
                 </a>

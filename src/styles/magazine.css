@@ -876,20 +876,31 @@ article:hover .img-cover {
   z-index: 2;
   cursor: pointer;
 }
-.career-playbook__item{
+.career-playbook__panel {
+  padding: var(--space-4);
+  border-radius: 4px;
+  background: var(--rm-spot-bg);
+  /* border: 1px solid color-mix(in srgb, var(--rm-primary) 12%, var(--rm-border)); */
+}
+
+.career-playbook__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.career-playbook__item {
   padding: 12px 0 12px 24px;
   position: relative;
-    border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
 }
-.notify__close:hover {
-  background: var(--rm-bg-surface);
-  color: var(--rm-text-main);
-}
-.career-playbook__item p{
-      margin: 0 0 4px;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: var(--lh-card);
+
+.career-playbook__item p {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: var(--lh-card);
+  color: var(--color-text-heading);
 }
 
 .career-playbook__item::before {
@@ -906,6 +917,43 @@ article:hover .img-cover {
     center / contain no-repeat;
 }
 
+.career-playbook__item--feature {
+  padding: 0 0 14px;
+}
+
+.career-playbook__item--feature::before {
+  display: none;
+}
+
+.career-playbook__feature {
+  display: block;
+  color: inherit;
+}
+
+.career-playbook__feature-media {
+  display: block;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 16 / 10;
+  background: var(--color-surface-muted);
+}
+
+.career-playbook__feature-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.career-playbook__feature p {
+  margin: 0;
+}
+
+.career-playbook__feature:hover p {
+  color: var(--rm-primary);
+}
+
 .career-playbook__ads {
   display: flex;
   flex-direction: column;
@@ -916,6 +964,11 @@ article:hover .img-cover {
 .career-playbook__ads .site-ad__frame img {
   width: 100%;
   height: auto;
+}
+
+.notify__close:hover {
+  background: var(--rm-bg-surface);
+  color: var(--rm-text-main);
 }
 
 .notify__tabs {
@@ -4817,7 +4870,7 @@ body.menu-open {
   position: relative;
   min-height: clamp(360px, 48vw, 370px);
   border: 2px solid var(--feature-spot-bg);
-  border-radius: 12px;
+  border-radius: 4px;
   overflow: visible;
   color: #fff;
   background: var(--feature-spot-bg);
@@ -4833,7 +4886,7 @@ body.menu-open {
   width: 100%;
   object-fit: cover;
   object-position: center top;
-  border-radius: 10px 10px 0 0;
+  border-radius:2px 2px 0 0;
 }
 
 .feature-spot__shade {
@@ -4997,32 +5050,6 @@ body.menu-open {
   min-width: 0;
 }
 
-.iv-board .section-title {
-  color: var(--rm-accent);
-  font-weight: 700;
-}
-
-.iv-board .section-title__text {
-  color: var(--rm-accent);
-  font-weight: 700;
-}
-
-.iv-board .section-title__text::after {
-  display: none;
-}
-
-.iv-board .section-title__more {
-  color: #6b7280;
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.iv-board .section-title__more svg {
-  stroke: #6b7280;
-  width: 14px;
-  height: 14px;
-}
-
 .iv-hero {
   display: grid;
   gap: 0;
@@ -5086,7 +5113,7 @@ body.menu-open {
     top: 0;
     bottom: 0;
     z-index: 3;
-    width: 6px;
+    width: 8px;
     background: var(--rm-accent);
     pointer-events: none;
   }
@@ -5094,14 +5121,14 @@ body.menu-open {
   .iv-hero__notch::after {
     content: "";
     position: absolute;
-    left: 100%;
+    right: 100%;
     top: 50%;
     transform: translateY(-50%);
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 11px 0 11px 13px;
-    border-color: transparent transparent transparent var(--rm-accent);
+    border-width: 15px 18px 15px 0;
+    border-color: transparent var(--rm-accent) transparent transparent;
   }
 }
 
@@ -5294,7 +5321,7 @@ body.menu-open {
 
 .biz-hero__title {
   margin: 0;
-  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  font-size: clamp(1.25rem, 2.2vw, 2.2rem);
   font-weight: 700;
   line-height: 1.35;
   letter-spacing: -0.01em;
@@ -5810,6 +5837,91 @@ body.menu-open {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
   }
+}
+
+/* Dual category columns — खेल · पर्यटन */
+.duo-cats {
+  display: grid;
+  gap: var(--section-gap);
+  padding-block: var(--section-y);
+  margin-bottom: 0;
+  border-top: 1px solid var(--color-border-light);
+}
+
+@media (min-width: 768px) {
+  .duo-cats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+}
+
+.duo-cats .col-block {
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .duo-cats .col-block:first-child {
+    padding-right: clamp(1.25rem, 2.5vw, 2rem);
+    border-right: 1px solid var(--color-border-light);
+  }
+
+  .duo-cats .col-block:last-child {
+    padding-left: clamp(1.25rem, 2.5vw, 2rem);
+  }
+}
+
+.duo-cats .col-block__lead {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.duo-cats .col-block__lead-media {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+}
+
+.duo-cats .col-block__lead-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.duo-cats .col-block__lead-title {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.duo-cats .col-block__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.duo-cats .col-block__item {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.duo-cats .col-block__item-media {
+  width: 110px;
+  height: 78px;
+  border-radius: var(--radius);
+}
+
+.duo-cats .col-block__item-title {
+  margin: 0;
+  font-size: 1.02rem;
 }
 
 .col-block__lead {

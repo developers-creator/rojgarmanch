@@ -17,7 +17,6 @@ import { Kala } from "./Kala";
 import { Khel } from "./Khel";
 import { Paryatan } from "./Paryatan";
 import { RamailoSansar } from "./RamailoSansar";
-import { DeshSamaj } from "./DeshSamaj";
 import { Bishwa } from "./Bishwa";
 import { EnglishHeadline } from "./EnglishHeadline";
 import { TV } from "./TV";
@@ -87,11 +86,10 @@ export function HomePage({ data }: HomePageProps) {
 
       <BannerAd ad={ADS.ncell} />
 
-      {/* खेल · पर्यटन · रमाइलो संसार */}
-      <section className="container triple" aria-label="थप वर्ग">
+      {/* खेल · पर्यटन */}
+      <section className="container duo-cats" aria-label="खेल र पर्यटन">
         <Khel />
         <Paryatan />
-        <RamailoSansar />
       </section>
 
       <BannerAd ad={ADS.hardik} />
@@ -106,9 +104,9 @@ export function HomePage({ data }: HomePageProps) {
 
       <BannerAd ad={ADS.ncell} />
 
-      {/* देश/समाज · विश्व · English Headline */}
-      <section className="container triple" aria-label="देश समाज विश्व">
-        <DeshSamaj />
+      {/* रमाइलो संसार · विश्व · English Headline */}
+      <section className="container triple" aria-label="रमाइलो संसार विश्व">
+        <RamailoSansar />
         <Bishwa />
         <EnglishHeadline />
       </section>
