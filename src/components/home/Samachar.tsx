@@ -1,5 +1,7 @@
 import type { Post } from "@/types/content";
+import { ADS } from "@/lib/ads";
 import { Reveal } from "@/components/motion/Reveal";
+import { AdUnit } from "@/components/ui/AdUnit";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { CareerPlaybook } from "./CareerPlaybook";
 
@@ -7,11 +9,48 @@ type SamacharProps = {
   items: Post[];
 };
 
+function NewsRow({ items }: { items: Post[] }) {
+  if (!items.length) return null;
+
+  return (
+    <div className="samachar-board__row">
+      {items.map((item, index) => (
+        <Reveal
+          key={item.id}
+          className={`samachar-card${index ? ` reveal-delay-${Math.min(index, 3)}` : ""}`}
+        >
+          <a
+            className="samachar-card__media"
+            href={item.href}
+            tabIndex={-1}
+            aria-hidden="true"
+          >
+            {item.imageUrl ? (
+              <img
+                className="img-cover"
+                src={item.imageUrl}
+                alt={item.imageAlt || item.title}
+                width={400}
+                height={240}
+                loading="lazy"
+              />
+            ) : null}
+          </a>
+          <h3 className="samachar-card__title line-2">
+            <a href={item.href}>{item.title}</a>
+          </h3>
+        </Reveal>
+      ))}
+    </div>
+  );
+}
+
 /** समाचार col-8 board + करियर प्लेबुक col-4 */
 export function Samachar({ items }: SamacharProps) {
   const featured = items[0];
   const side = items.slice(1, 3);
   const row = items.slice(3, 6);
+  const rowExtra = items.slice(6, 9);
 
   return (
     <section className="samachar" id="samachar" aria-labelledby="samachar-title">
@@ -78,37 +117,12 @@ export function Samachar({ items }: SamacharProps) {
                 </div>
               </div>
 
-              {row.length ? (
-                <div className="samachar-board__row">
-                  {row.map((item, index) => (
-                    <Reveal
-                      key={item.id}
-                      className={`samachar-card${index ? ` reveal-delay-${Math.min(index, 3)}` : ""}`}
-                    >
-                      <a
-                        className="samachar-card__media"
-                        href={item.href}
-                        tabIndex={-1}
-                        aria-hidden="true"
-                      >
-                        {item.imageUrl ? (
-                          <img
-                            className="img-cover"
-                            src={item.imageUrl}
-                            alt={item.imageAlt || item.title}
-                            width={400}
-                            height={240}
-                            loading="lazy"
-                          />
-                        ) : null}
-                      </a>
-                      <h3 className="samachar-card__title line-2">
-                        <a href={item.href}>{item.title}</a>
-                      </h3>
-                    </Reveal>
-                  ))}
-                </div>
-              ) : null}
+              <NewsRow items={row} />
+              <NewsRow items={rowExtra} />
+            </div>
+
+            <div className="samachar__main-ad">
+              <AdUnit ad={ADS.hbl} variant="aside" useMobileImage={false} />
             </div>
           </div>
 

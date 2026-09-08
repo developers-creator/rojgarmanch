@@ -200,9 +200,15 @@ const homePageData: HomePageData = {
     }),
     post({
       title: "महिला उद्यमशीलता कार्यक्रम दोस्रो चरणमा",
-      imageUrl: u("1573497019940-1c28c88b4f3e", 480, 280),
+      imageUrl: u("1559136555-9303baea8ebd", 480, 280),
       category: "समाचार",
       author: "आन्या शर्मा",
+    }),
+    post({
+      title: "कृषि सहकारीमा रोजगार सिर्जना बढ्दो",
+      imageUrl: u("1461896836934-ffe607ba8211", 480, 280),
+      category: "समाचार",
+      author: "मोहन सुवेदी",
     }),
   ],
   igStories: [
