@@ -50,6 +50,11 @@ export const metadata: Metadata = {
     description: "रोजगार समाचार, अन्तर्वार्ता, सीप र करियर मार्गदर्शन।",
     images: ["/images/rojgar-manch-logo.svg"],
   },
+  icons: {
+    icon: [{ url: "/images/favicon.png", type: "image/png" }],
+    apple: [{ url: "/images/favicon.png", type: "image/png" }],
+    shortcut: ["/images/favicon.png"],
+  },
 };
 
 export default function RootLayout({

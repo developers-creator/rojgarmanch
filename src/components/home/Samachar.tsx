@@ -121,9 +121,7 @@ export function Samachar({ items }: SamacharProps) {
               <NewsRow items={rowExtra} />
             </div>
 
-            <div className="samachar__main-ad">
-              <AdUnit ad={ADS.hbl} variant="aside" useMobileImage={false} />
-            </div>
+            
           </div>
 
           <CareerPlaybook />

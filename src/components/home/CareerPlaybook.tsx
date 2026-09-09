@@ -14,13 +14,10 @@ const tips = [
     text: "रातमा भारी काम घटाउनुहोस्; दिनको मुख्य घण्टामा गहिरो काम गर्नुहोस्।",
   },
   {
-    text: "सिकाइ र विश्राम दुवै राख्नुहोस् — थकानले निर्णय बिगार्छ।",
-  },
-  {
     text: "साना लक्ष्य राख्नुहोस्, तर नियमित समीक्षा नछोड्नुहोस्।",
   },
   {
-    text: "रातमा भारी काम घटाउनुहोस्; दिनको मुख्य घण्टामा गहिरो काम गर्नुहोस्।",
+    text: "प्रतिक्रिया माग्नुहोस् — आफ्नो प्रगति बाहिरबाट पनि हेर्नुहोस्।",
   },
 ] as const;
 
@@ -34,10 +31,10 @@ export function CareerPlaybook() {
             करियर प्लेबुक
           </SectionTitle>
           <ul className="career-playbook__list">
-            {tips.map((tip) =>
+            {tips.map((tip, index) =>
               "featured" in tip && tip.featured ? (
                 <li
-                  key={tip.text}
+                  key={index}
                   className="career-playbook__item career-playbook__item--feature"
                 >
                   <a className="career-playbook__feature" href="#article">
@@ -54,7 +51,7 @@ export function CareerPlaybook() {
                   </a>
                 </li>
               ) : (
-                <li key={tip.text} className="career-playbook__item">
+                <li key={index} className="career-playbook__item">
                   <p>{tip.text}</p>
                 </li>
               ),
